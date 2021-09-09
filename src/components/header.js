@@ -5,7 +5,7 @@ const Header = () => {
     return (
       <div className="App">
     <ReactBootStrap.Navbar collapseOnSelect expand="xl" bg="light"  >
-  <ReactBootStrap.Navbar.Brand href="#home" style={{color:'black', marginLeft:30,fontWeight:'bold'}}>ScoreQuiz</ReactBootStrap.Navbar.Brand>
+  <ReactBootStrap.Navbar.Brand href="#home" style={{color:'black', marginLeft:30,fontWeight:'bold',display:'flex'}}>Core <div style={{color:'#F3105F'}}>Quiz</div></ReactBootStrap.Navbar.Brand>
   <ReactBootStrap.Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav" style={{justifyContent:'flex-end',padding:2}}>
     <ReactBootStrap.Nav className="mr-auto"> 
