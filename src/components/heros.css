@@ -84,12 +84,32 @@
 
 }
 h1 {
-    background: #CF1512;
-background: -webkit-linear-gradient(to right, #fff 0%, #CF1512 100%);
-background: -moz-linear-gradient(to right, #fff 0%, #CF1512 100%);
-background: linear-gradient(to right, #fff 0%, #CF1512 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+   color:#F3105F;
+  }
+  .button4 {
+    width: 30px;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #ff6297ec;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-right: 40px;
+    }
+  
+  .butto:hover {
+    background-color: #dddd;
+    box-shadow: 1px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
   }
  
  
