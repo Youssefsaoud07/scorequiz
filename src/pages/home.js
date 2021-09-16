@@ -192,7 +192,7 @@ const Home = () => {
         <Grid container component="main" className={classes.root} style={{ width: '100%' }}>
             <Box component="div" display="inline" className={classes.heros}>
                 <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}>Online Quiz Courses Catalogue</h3>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                <p>It is a long established fact that a reader will be distracted by the readable of content of a page when looking at its layout.</p>
                 <TextField id="filled-search" label="Search field" type="search"  variant="outlined"  style={{width:'70%',height:'10px'}} />
             </Box>
             <Box component="div" display="inline" className={classes.cardContainer}>
