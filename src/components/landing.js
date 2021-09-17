@@ -12,7 +12,7 @@ const Landing = () => {
            <div style={{position:'absolute',marginTop:100,padding:10,justifyContent:'flex-start',textAlign:'initial',width:'70%'}}>
               <h1> Power your 
                   education empire</h1>
-                  <div style={{fontSize:18,color:'#fff'}}>it's a long established fact that a reader will be distracted <br/> by the readable content of a page when looking at it's layout</div>
+                  <div style={{fontSize:18,color:'#fff'}}>it's  a long established fact that a reader will be distracted <br/> by the readable content of a page when looking at it's layout</div>
                   
            </div>
            </div>
