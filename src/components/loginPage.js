@@ -54,7 +54,7 @@ const useStyles = makeStyles(styles);
       .signInWithPopup(provider)
       .then((result) => {
         console.log('User has signed in.')
-      history.push('/')
+      history.push('/welcome')
       }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
@@ -75,7 +75,7 @@ const useStyles = makeStyles(styles);
         await app
           .auth()
           .signInWithEmailAndPassword(email, password).then((result) =>
-           {history.push('/')})
+           {history.push('/welcome')})
           
       
             } catch (error) {
@@ -87,6 +87,9 @@ const useStyles = makeStyles(styles);
   
 
   const { currentUser } = useContext(AuthContext);
+  if(currentUser){
+    return <Redirect to ='/welcome' />
+  }
   return (
     
      

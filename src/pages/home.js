@@ -1,16 +1,15 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import { width } from 'dom-helpers';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import firebase from 'firebase';
 import TextField from '@material-ui/core/TextField';
 import QCard from '../components/quizCard'
 import '../components/heros.css'
 import BCard from '../components/cardsBottom';
 import Footer from '../components/footer';
 import Auth from './auth';
+import { AuthContext } from '../context/Context';
 //data
 const data=[
 {
@@ -127,10 +126,10 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
         fontFamily: 'robotic',
         color: 'black',
-        width: '60%',
+        width: '90%',
         padding: 30,
         marginTop:20,
-        paddingLeft:70,
+        
         fontFamily:'roboto'
 
     },
@@ -142,7 +141,9 @@ const useStyles = makeStyles((theme) => ({
         paddingTop:50,
         justifyContent:'center',
         padding:'50px 30px',
-        fontFamily:'roboto'
+        fontFamily:'roboto',
+        gap:'40px'
+
 
     },
     cardContainer:{
@@ -160,6 +161,10 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: '1px 1px #888888',
         fontFamily:'roboto'
         
+    },
+    blog:{
+        width:'100%',
+        justifyContent:'center'
     }
 
 
@@ -168,6 +173,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Home = () => {
+    
+  
+
+    const {currentUser}=useContext(AuthContext)
+    
+    const [user, setUser] = useState(currentUser);
+    console.log('fireuser',user)
+   
+   
+    //fetch user
+
+    useEffect(() => {
+         
+          if (currentUser) {
+            var uid = currentUser.uid;
+            console.log(`User has signed in with UID: ${uid}`)
+            setUser(currentUser)
+            
+          } else {
+            // User is signed out
+            console.log('User is not signed in.')
+            setUser(null)
+          }
+        
+      }, [])
     
     const [filtredData, setFlitredData] = useState(
         {
@@ -188,7 +218,7 @@ const Home = () => {
     var items2= show.slice(0, size)
     return (
         <>
-        <Auth />
+        <Auth user={user} />
         <Grid container component="main" className={classes.root} style={{ width: '100%' }}>
             <Box component="div" display="inline" className={classes.heros}>
                 <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}>Online Quiz Courses Catalogue</h3>
@@ -204,7 +234,7 @@ const Home = () => {
                 </Box>
                
             </Box>
-            <Box style={{display:"flex",justifyContent:'space-between',width:'100%',padding:'40px 40px'}}>
+            <Box style={{display:"flex",justifyContent:'center',width:'80%',padding:'40px 40px',flexWrap:'wrap',gap:5,margin:'auto'}}>
                 <div style={{borderWidth:1,
                     backgroundColor:'gray',
                     width:'50%',height:300,justifyContent:'center',alignItems:'center',display:'flex',color:'#fff'}}>ads</div>
@@ -226,11 +256,19 @@ const Home = () => {
                 <Box component="div" display="inline" className={classes.cards}>
                    
                 {items2.map((value,key)=>(
-                    <BCard value={value} />
+                    <QCard value={value} />
                 ))}
                 </Box>
                
             </Box>
+            <Box className={classes.blog}>
+                <div style={{textAlign:'start',paddingLeft:85,fontSize:20,fontWeight:'bold'}} > Blogs</div>
+                <Box component="div" display="inline"  className={classes.cards}>
+                {items.map((value,key)=>(
+                    <BCard value={value} />
+                ))}
+               </Box>
+                </Box>
             <Footer />
                   
         </Grid>

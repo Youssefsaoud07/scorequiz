@@ -1,5 +1,6 @@
 import React from 'react'
 import * as ReactBootStrap from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -23,7 +24,8 @@ const Header = () => {
     
     
     
-    <ReactBootStrap.Nav.Link eventKey={2} href="#memes"  style={{backgroundColor:'gray',color:'#fff'}}>
+    <ReactBootStrap.Nav.Link eventKey={2} href="/login"  style={{backgroundColor:'gray',color:'#fff'}} component={Link}
+          to="/login">
         Start Free Now
       </ReactBootStrap.Nav.Link>
    

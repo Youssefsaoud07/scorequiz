@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { createTheme } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar'
 import {useHistory} from "react-router-dom";
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
      
     },
     menuButton: {
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(1),
     },
     title: {
       display: 'flex !important',
-      gap: 6,
+      gap: 3,
       
       [theme.breakpoints.up('sm')]: {
         display: 'block',
@@ -89,14 +89,21 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
       },
     },
+    orange:{
+      background:'#F3105F',
+      color:'#fff'
+    },
+    appMenu:{
+      padding:'15px 7px 5px 10px'
+    }
   }));
   
-  export default function Auth() {
+  export default function Auth({user}) {
      const history=useHistory();
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  
+    console.log(user[0])
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -128,24 +135,10 @@ const useStyles = makeStyles((theme) => ({
       setMobileMoreAnchorEl(event.currentTarget);
     };
 
-    const [user, setUser] = useState(null);
+    const [userui, setUserui] = useState(user);
     //fetch user
 
-    useEffect(() => {
-        // FIR Auth State Observer
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            var uid = user.uid;
-            console.log(`User has signed in with UID: ${uid}`)
-            setUser(uid)
-            
-          } else {
-            // User is signed out
-            console.log('User is not signed in.')
-            setUser(null)
-          }
-        });
-      }, [])
+   
   
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
@@ -175,8 +168,8 @@ const useStyles = makeStyles((theme) => ({
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={4} color="secondary">
+          <IconButton aria-label="mails" color="inherit">
+            <Badge  color="secondary">
               <MailIcon />
             </Badge>
           </IconButton>
@@ -197,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
             aria-haspopup="true"
             color="inherit"
           >
-            <AccountCircle />
+            
           </IconButton>
           <p>Profile</p>
         </MenuItem>
@@ -221,32 +214,16 @@ const useStyles = makeStyles((theme) => ({
             <Typography className={classes.title} variant="h6" noWrap>
               Learn <div style={{color:'#F3105F'}}>Quiz</div>
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </div>
+           
             <div className={classes.grow} />
             {user?(
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton aria-label="show 17 new notifications" color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+            
+               <div className={classes.appMenu}>Course</div>
+               <div className={classes.appMenu}>About us</div>
+               <div className={classes.appMenu}>Blog</div>
+               
+             
               <IconButton
                 edge="end"
                 aria-label="account of current user"
@@ -255,7 +232,8 @@ const useStyles = makeStyles((theme) => ({
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+               <Avatar className={classes.orange} src='../images/user.png' />
+              <div style={{fontFamily:'roboto',fontSize:14,paddingLeft:10}}> hello..!<br /> {user.displayName}</div>
               </IconButton>
             </div>):(<div></div>)}
             {user?(
