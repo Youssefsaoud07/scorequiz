@@ -10,125 +10,32 @@ import BCard from '../components/cardsBottom';
 import Footer from '../components/footer';
 import Auth from './auth';
 import { AuthContext } from '../context/Context';
+import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { data } from '../dummy';
 //data
-const data=[
-{
-    id:1,
-    type:'category 1',
-    title:'Photography',
-    students:200,
-    rating:4.1,
-    image:'https://www.eurodiaconia.org/wordpress/wp-content/uploads/2017/08/photography.jpeg'
 
-},
-{
-    id:2,
-    type:'category 1',
-    title:'Video Production',
-    students:200,
-    rating:4.1,
-    image:'https://www.breezpost.com/wp-content/uploads/2020/10/Video-Production-Company.jpg'
-
-},
-{
-    id:3,
-    type:'category 2',
-    title:'Adobe Lightroom',
-    students:200,
-    rating:4.1,
-    image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO2MwKnZw8kbS9rmkPVzKeJJOau1EnPKTHUPEk4jXhZR4plJkh-s0obkR9WpIyetJyVA8&usqp=CAU'
-
-},
-{
-    id:4,
-    type:'category 1',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:5,
-    type:'category 1',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:6,
-    type:'category 1',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:7,
-    type:'category 1',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:8,
-    type:'category 3',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:9,
-    type:'category 1',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:10,
-    type:'category 2',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-{
-    id:11,
-    type:'category 2',
-    title:'Video Editing',
-    students:200,
-    rating:4.1,
-    image:'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg'
-
-},
-]
 
 
 //styling
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: '#F9F9F9',
-        fontFamily:'roboto'
+        backgroundColor: 'rgb(248,248,248)',
+        fontFamily:'roboto',
+        
         
     },
     heros: {
         textAlign: 'left',
-        fontFamily: 'robotic',
+        fontFamily: 'roboto',
         color: 'black',
-        width: '90%',
-        padding: 30,
-        marginTop:20,
+       marginLeft:100,
+        
+        marginTop:50,
+        [theme.breakpoints.down('md')]: {
+          marginLeft:20
+        },
         
         fontFamily:'roboto'
 
@@ -142,14 +49,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent:'center',
         padding:'50px 30px',
         fontFamily:'roboto',
-        gap:'40px'
+        gap:'45px'
 
 
     },
     cardContainer:{
         width:'100%',
         marginTop:70,
-        fontFamily:'roboto'
+        fontFamily:'roboto',
+       
         
     },
     category:{
@@ -164,7 +72,13 @@ const useStyles = makeStyles((theme) => ({
     },
     blog:{
         width:'100%',
-        justifyContent:'center'
+        justifyContent:'center',
+        marginLeft:100,
+
+    },
+    adContainer:{
+        height:'300px',
+        background:'Gray'
     }
 
 
@@ -219,14 +133,14 @@ const Home = () => {
     return (
         <>
         <Auth user={user} />
-        <Grid container component="main" className={classes.root} style={{ width: '100%' }}>
-            <Box component="div" display="inline" className={classes.heros}>
-                <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}>Online Quiz Courses Catalogue</h3>
-                <p>It is a long established fact that a reader will  distracted by the readable of content of  page when looking at its layout.</p>
-                <TextField id="filled-search" label="Search field" type="search"  variant="outlined"  style={{width:'70%',height:'10px'}} />
-            </Box>
+        <Grid container component="main" className={classes.root}   >
+            <Grid item component="div" display="inline" className={classes.heros}xs={12} md={8} lg={10} spacing={4}>
+                <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}><Typography variant='h4' fontFamily='roboto'>Online Quiz Courses Catalogue</Typography></h3>
+                <Typography fontFamily='roboto' style={{marginBottom:20}}>It is a long established fact that a reader will  distracted by the readable of content of  page when looking at its layout.</Typography>
+                <TextField id="filled-search" label="Search field" type="search"  variant="outlined"   sx={{ m: 1 }} style={{width:'70%'}}  />
+            </Grid>
             <Box component="div" display="inline" className={classes.cardContainer}>
-                <h5 style={{ color: '#black' }}>Populer Quiz Courses</h5>
+            <Typography fontFamily='roboto' variant='h6' style={{fontWeight:'bold'}}>Popular Quiz Courses</Typography>
                 <Box component="div" display="inline" className={classes.cards}>
                 {items.map((value,key)=>(
                     <QCard value={value} />
@@ -234,13 +148,10 @@ const Home = () => {
                 </Box>
                
             </Box>
-            <Box style={{display:"flex",justifyContent:'center',width:'80%',padding:'40px 40px',flexWrap:'wrap',gap:5,margin:'auto'}}>
-                <div style={{borderWidth:1,
-                    backgroundColor:'gray',
-                    width:'50%',height:300,justifyContent:'center',alignItems:'center',display:'flex',color:'#fff'}}>ads</div>
-                <div style={{borderWidth:1,backgroundColor:'gray',width:'49%',
-                height:300,justifyContent:'center',alignItems:'center',display:'flex',color:'#fff'}}>ads</div>
-                </Box>
+            <Grid container spacing={0} style={{gap:1 ,justifyContent:'center'}} >
+               <Grid item xs={12} md={6} lg={5} className={classes.adContainer} >ads</Grid>
+               <Grid item xs={12} md={6} lg={5} className={classes.adContainer} >ads</Grid>
+                </Grid>
 
                 <Box style={{display:'flex',justifyContent:'center',width:'100%',paddingTop:40}}>
                   <button className='button4' onClick={()=>setFlitredData({filtered:'category 1'})}></button>
@@ -262,13 +173,14 @@ const Home = () => {
                
             </Box>
             <Box className={classes.blog}>
-                <div style={{textAlign:'start',paddingLeft:85,fontSize:20,fontWeight:'bold'}} > Blogs</div>
-                <Box component="div" display="inline"  className={classes.cards}>
+                <Typography fontFamily='roboto' variant='h6' style={{textAlign:'start',fontWeight:'bold'}} > Blogs</Typography>
+                </Box>
+                <Box component="div" display="inline"  className={classes.cards} >
                 {items.map((value,key)=>(
                     <BCard value={value} />
                 ))}
                </Box>
-                </Box>
+               
             <Footer />
                   
         </Grid>

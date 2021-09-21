@@ -8,6 +8,7 @@ import Home from './pages/home';
 import PrivateRoute from './routes/privateRoute';
 
 import LandingPage from './pages/LandingPage';
+import Course from './pages/Course';
 
 const theme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
     <PrivateRoute exact path="/welcome" component={Home} />
     <Route exact path="/login" component={SignInSide} />
     <Route exact path="/" component={LandingPage} />
+    <PrivateRoute exact path="/Courses" component={Course} />
     </Switch>
    </div>
      </Router>

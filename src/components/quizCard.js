@@ -19,7 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 245,
-    margin:'5px 50px',
+    margin:'5px 0px',
   },
   media: {
     height: 200,
@@ -63,7 +63,7 @@ export default function QCard({value}) {
         title="Paella dish"
         
       />
-      <div style={{position:'relative',bottom:'55px',color:'#fff',height:0,display:'flex',justifyContent:'space-between',textAlign:'start',marginLeft:10,marginRight:10}}>
+      <div style={{position:'relative',bottom:'55px',color:'#fff',height:0,display:'flex',justifyContent:'space-between',textAlign:'start'}}>
         <div>
       <p style={{fontSize:14,fontWeight:'bold'}}>{value.title}</p>
       <p style={{fontSize:12}}>{value.students} students</p>

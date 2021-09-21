@@ -13,6 +13,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import { Link } from 'react-router-dom';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Avatar from '@material-ui/core/Avatar'
 import {useHistory} from "react-router-dom";
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
       
       [theme.breakpoints.up('sm')]: {
         display: 'block',
-        fontFamily:'roboto'
+        
       },
     },
     search: {
@@ -152,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
         onClose={handleMenuClose}
       >
         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={handleMenuClose} onClick={()=>handelLogout()}>Signout</MenuItem>
+        <MenuItem onClick={handleMenuClose} onClick={()=>handelLogout()}><Typography font='roboto'>Signout</Typography> </MenuItem>
       </Menu>
     );
   
@@ -211,7 +212,7 @@ const useStyles = makeStyles((theme) => ({
               <MenuIcon />
             
             </IconButton>):(<div></div>)}
-            <Typography className={classes.title} variant="h6" noWrap>
+            <Typography fontFamily='roboto' className={classes.title} variant="h6" noWrap>
               Learn <div style={{color:'#F3105F'}}>Quiz</div>
             </Typography>
            
@@ -219,7 +220,7 @@ const useStyles = makeStyles((theme) => ({
             {user?(
             <div className={classes.sectionDesktop}>
             
-               <div className={classes.appMenu}>Course</div>
+            <Link to="/courses" ><div className={classes.appMenu}>Course</div></Link>
                <div className={classes.appMenu}>About us</div>
                <div className={classes.appMenu}>Blog</div>
                
@@ -233,7 +234,7 @@ const useStyles = makeStyles((theme) => ({
                 color="inherit"
               >
                <Avatar className={classes.orange} src='../images/user.png' />
-              <div style={{fontFamily:'roboto',fontSize:14,paddingLeft:10}}> hello..!<br /> {user.displayName}</div>
+              <Typography fontFamily='roboto' style={{fontSize:14,paddingLeft:10}}> hello..!<br /> {user.displayName}</Typography>
               </IconButton>
             </div>):(<div></div>)}
             {user?(
