@@ -21,16 +21,17 @@
 .button {
     background-color: #4CAF50; /* Green */
     border: none;
+    
     color: white;
-    padding: 16px 32px;
+    padding:9px 16px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+   
     transition-duration: 0.4s;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 25px;
   }
   .button3 {
     background-color: #F3105F; 
@@ -87,15 +88,15 @@ h1 {
    color:#F3105F;
   }
   .button4 {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     font-family: 'Roboto', sans-serif;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 2.5px;
     font-weight: 500;
     color: #000;
-    background-color: #ff6297ec;
+    background-color:#fff ;
     border: none;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -105,12 +106,39 @@ h1 {
     margin-right: 40px;
     }
   
-  .butto:hover {
+  .button:hover {
     background-color: #dddd;
-    box-shadow: 1px 15px 20px rgba(46, 229, 157, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
+    box-shadow: 1px 15px 20px #ff6297ec;
+    color: #F3105F;
+    transform: translateY(-1px);
   }
  
- 
- 
+  .searchButton {
+    background-color: #4CAF50; /* Green */
+   
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+  .searchButton3 {
+    background-color: #F3105F; 
+    color: white; 
+    border: 2px solid #fff;
+  }
+  
+  .searchButton3:hover {
+    background-color: #fff;
+    color:#F3105F ;
+  }
+  .purchase{
+    position: '-webkit-sticky';
+        position: 'sticky';
+  }

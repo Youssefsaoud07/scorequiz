@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
       display: 'flex !important',
       gap: 3,
+      color:'gray',
       
       [theme.breakpoints.up('sm')]: {
         display: 'block',
@@ -85,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up('md')]: {
         display: 'flex',
       },
+      
     },
     sectionMobile: {
       display: 'flex',
@@ -98,6 +100,13 @@ const useStyles = makeStyles((theme) => ({
     },
     appMenu:{
       padding:'15px 7px 5px 10px'
+    },
+    menu:{
+      color:'gray',
+      "&:hover": {
+        background: "#F3105F",
+        color:'#fff'
+      },
     }
   }));
   const drawerWidth = 240;
@@ -241,17 +250,19 @@ const useStyles = makeStyles((theme) => ({
               <MenuIcon />
             
             </IconButton>):(<div></div>)}
+            <Link to="/welcome" style={{textDecoration:'none'}}>
             <Typography fontFamily='roboto' className={classes.title} variant="h6" noWrap>
               Learn <div style={{color:'#F3105F'}}>Quiz</div>
             </Typography>
+            </Link>
            
             <div className={classes.grow} />
             {user?(
             <div className={classes.sectionDesktop}>
             
-            <Link to="/courses" ><div className={classes.appMenu}>Course</div></Link>
-               <div className={classes.appMenu}>About us</div>
-               <div className={classes.appMenu}>Blog</div>
+            <Link className={classes.menu} to="/course" style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>Course</div></Link>
+            <Link className={classes.menu}  style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>About us</div></Link>
+            <Link className={classes.menu} style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>Blog</div></Link>
                
              
               <IconButton

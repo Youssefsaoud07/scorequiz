@@ -43,3 +43,27 @@
     border-radius:13px;
 
 }
+@media screen and (max-width: 700px){
+    .answerB {
+    width: 290px;
+    height: 80px;
+    font-size: 10;
+}
+    .disabled{
+        width: 290px;
+        height: 80px;
+        font-size: 10;
+    }
+    .answerBfalse{
+        width: 290px;
+        height: 80px;
+        font-size: 10;
+    }
+    .answerBCorrect{
+        width: 290px;
+        height: 80px;
+        font-size: 10;
+    }
+
+}
+

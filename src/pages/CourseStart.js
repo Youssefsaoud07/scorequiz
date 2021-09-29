@@ -1,4 +1,4 @@
-import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Divider, Drawer, Grid, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import zIndex from '@material-ui/core/styles/zIndex';
 import { mergeClasses } from '@material-ui/styles';
 import React,{useContext,useState} from 'react'
@@ -29,7 +29,13 @@ const useStyles = makeStyles((theme) => ({
       coursesList:{
           marginTop:50,
           width:260,
-          paddingLeft:20
+          paddingLeft:20,
+          [theme.breakpoints.down('sm')]: {
+           
+           display:'none'
+  
+          },
+          
       }
 }))
 const drawerWidth = 240;
@@ -88,9 +94,9 @@ const CourseStart = ({ children }) => {
          </List>
          <Divider orientation="vertical" flexItem  />
         
-        <div className={classes.page}>
+        <Grid item xs={12} md={12} lg={8} className={classes.page}>
         <Quiz />
-        </div>
+        </Grid>
 
         </div>
         </div>

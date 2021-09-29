@@ -10,9 +10,14 @@ import BCard from '../components/cardsBottom';
 import Footer from '../components/footer';
 import Auth from './auth';
 import { AuthContext } from '../context/Context';
-import { Typography } from '@material-ui/core';
+import { ButtonBase, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { data } from '../dummy';
+import { Image } from '@material-ui/icons';
+import background from '../assets/img/home.png'
+import { height } from 'dom-helpers';
+import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
+import '../components/heros.css'
 //data
 
 
@@ -21,20 +26,26 @@ import { data } from '../dummy';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: 'rgb(248,248,248)',
+        
         fontFamily:'roboto',
         
         
     },
     heros: {
         textAlign: 'left',
+        display:'flex',
         fontFamily: 'roboto',
         color: 'black',
-       marginLeft:100,
+        height:390,
+       
+       backgroundColor: 'rgb(248,248,248)',
+       
         
-        marginTop:50,
-        [theme.breakpoints.down('md')]: {
-          marginLeft:20
+        
+        [theme.breakpoints.down('sm')]: {
+          paddingLeft:20,
+          flexWrap:'wrap'
+
         },
         
         fontFamily:'roboto'
@@ -45,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
         flexWrap:'wrap',
         display:'flex',
         width:'100%',
-        paddingTop:50,
+        
         justifyContent:'center',
-        padding:'50px 30px',
+        padding:'10px 20px 50px 30px',
         fontFamily:'roboto',
         gap:'45px'
 
@@ -55,8 +66,14 @@ const useStyles = makeStyles((theme) => ({
     },
     cardContainer:{
         width:'100%',
-        marginTop:70,
+        marginTop:30,
         fontFamily:'roboto',
+        [theme.breakpoints.down('md')]: {
+            marginTop:10,
+            
+        
+          },
+
        
         
     },
@@ -79,7 +96,31 @@ const useStyles = makeStyles((theme) => ({
     adContainer:{
         height:'300px',
         background:'Gray'
-    }
+    },
+    slider:{
+        padding:'100px 60px',
+        height:300,
+        fontFamily:'roboto',
+        [theme.breakpoints.down('md')]: {
+            padding:'30px 5px'
+            
+        
+          },
+    },
+    background:{
+        width:900,
+        height:200,
+        backgroundSize:'cover',
+        [theme.breakpoints.down('sm')]: {
+            display:'none'
+
+            
+        
+          },
+
+    },
+    
+  
 
 
 
@@ -120,8 +161,10 @@ const Home = () => {
         }
     )
     const classes = useStyles();
-    let size = 4
+    let size = 5
+    let sizeB=4
     var items = data.slice(0, size)
+    var itemsB= data.slice(0, sizeB)
     
     
    
@@ -134,10 +177,17 @@ const Home = () => {
         <>
         <Auth user={user} />
         <Grid container component="main" className={classes.root}   >
-            <Grid item component="div" display="inline" className={classes.heros}xs={12} md={8} lg={10} spacing={4}>
+          
+            <Grid item component="div" display="inline" className={classes.heros}xs={12} md={12} lg={12}>
+                <Grid item className={classes.slider}>
                 <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}><Typography variant='h4' fontFamily='roboto'>Online Quiz Courses Catalogue</Typography></h3>
                 <Typography fontFamily='roboto' style={{marginBottom:20}}>It is a long established fact that a reader will  distracted by the readable of content of  page when looking at its layout.</Typography>
-                <TextField id="filled-search" label="Search field" type="search"  variant="outlined"   sx={{ m: 1 }} style={{width:'70%'}}  />
+                <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  />
+                <button class="button searchButton3" style={{marginLeft:'-80px'}}>search</button>
+                </Grid>
+                <Grid item className={classes.background}>
+                <img    src={background} style={{width:800,height:390, borderRadius:' 10% 0 10%  0' }} />
+                </Grid>
             </Grid>
             <Box component="div" display="inline" className={classes.cardContainer}>
             <Typography fontFamily='roboto' variant='h6' style={{fontWeight:'bold'}}>Popular Quiz Courses</Typography>
@@ -176,7 +226,7 @@ const Home = () => {
                 <Typography fontFamily='roboto' variant='h6' style={{textAlign:'start',fontWeight:'bold'}} > Blogs</Typography>
                 </Box>
                 <Box component="div" display="inline"  className={classes.cards} >
-                {items.map((value,key)=>(
+                {itemsB.map((value,key)=>(
                     <BCard value={value} />
                 ))}
                </Box>

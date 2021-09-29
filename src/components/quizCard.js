@@ -23,9 +23,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 245,
     margin:'5px 0px',
+    fontFamily:'roboto',
   },
   media: {
     height: 200,
+    fontFamily:'roboto',
     width:200,
     paddingTop: '56.25%', // 16:9
     position:'relative',
@@ -35,15 +37,18 @@ const useStyles = makeStyles((theme) => ({
   },
   expand: {
     transform: 'rotate(0deg)',
+    fontFamily:'roboto',
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
+    fontFamily:'roboto',
     transform: 'rotate(180deg)',
   },
   avatar: {
+    fontFamily:'roboto',
     backgroundColor: red[500],
   },
 }));
@@ -62,7 +67,7 @@ export default function QCard({value}) {
 
   return (
     <Card className={classes.root}>
-      <Link to={{
+      <Link style={{textDecoration:'none',fontFamily:'roboto'}} to={{
     pathname: "/courses",
     state: { quiz:value.quiz}
   }}>
@@ -73,12 +78,12 @@ export default function QCard({value}) {
         title="Paella dish"
         
       />
-      <div style={{position:'relative',bottom:'55px',color:'#fff',height:0,display:'flex',justifyContent:'space-between',textAlign:'start'}}>
+      <div style={{position:'relative',bottom:'55px',color:'#fff',height:0,display:'flex',justifyContent:'space-between',textAlign:'start', fontFamily:'roboto',}}>
         <div>
-      <p style={{fontSize:14,fontWeight:'bold'}}>{value.title}</p>
-      <p style={{fontSize:12}}>{value.students} Students</p>
+      <p style={{fontSize:14,fontWeight:'bold',padding:9,fontFamily:'roboto'}}>{value.title}</p>
+      <p style={{fontSize:14,padding:9,fontFamily:'roboto'}}>{value.students} Students</p>
       </div>
-      <p>{value.rating}</p>
+      <p style={{fontSize:14,padding:9,fontFamily:'roboto'}}>{value.rating}</p>
       </div>
       
       

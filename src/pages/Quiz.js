@@ -25,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
         height:30,
         borderWidth:3,
         borderRadius:30,
-        fontSize:10
+        fontSize:10,
+        [theme.breakpoints.down('sm')]: {
+            display:'none',
+   
+           },
     },
     question:{
         justifyContent:'center',
@@ -46,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     
     // },
     answersCorrect:{
-        width:700,
+        width:'40%',
         height:70,
         backgroundColor:'#02F91B',
         margin:10,
@@ -56,20 +60,25 @@ const useStyles = makeStyles((theme) => ({
     },
     answersBox:{
         justifyContent:'center',
-        display:'flex'
+        
 
     },
     submit:{
-        width:500,
+        width:'80%',
         height:70,
         backgroundColor:'#FF4260',
         margin:10,
         borderRadius:13,
+        [theme.breakpoints.down('sm')]: {
+            margin:30,
+   
+           },
         color:'#fff',
         '&:hover': {
             background: "orange",
             }
-    }
+    },
+    
     
 
 }))
@@ -219,9 +228,9 @@ const Quiz = () => {
 
     return (
         <div>
-            <Grid container sm={12} md={11}  className={classes.container}>
+            <Grid container sm={12} md={12}  className={classes.container}>
                 
-                    {showScore?(<Grid item sm={12} md={8} className={classes.container}>
+                    {showScore?(<Grid item sm={12} md={12} className={classes.container}>
                         
                         <Typography variant='h6'>congratulations</Typography>
                         <Typography variant='subtitle1'>You have Completed the Course</Typography>
@@ -229,10 +238,10 @@ const Quiz = () => {
                         <Typography variant='h6'>{score} </Typography>
                         
                         
-                   </Grid> ):(<Grid item sm={12} md={7} className={classes.container}>
+                   </Grid> ):(<Grid item sm={12} md={12} className={classes.container}>
                     
                
-                <Stepper activeStep={currentQuestion} alternativeLabel>
+                <Stepper activeStep={currentQuestion} alternativeLabel classname={classes.stepper}>
                     {quiz.quizzes.map((qustion) => (
                         <Step active key={qustion}>
                             <button className={classes.step}></button>
