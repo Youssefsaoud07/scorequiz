@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,6 +19,8 @@ import Avatar from '@material-ui/core/Avatar'
 import {useHistory} from "react-router-dom";
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { AuthContext } from '../context/Context';
+import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -98,15 +100,26 @@ const useStyles = makeStyles((theme) => ({
       padding:'15px 7px 5px 10px'
     }
   }));
+  const drawerWidth = 240;
   
-  export default function Auth({user}) {
+  export default function Auth() {
+    const{currentUser}=useContext(AuthContext)
      const history=useHistory();
     const classes = useStyles();
+    const [user, setUser] = useState(currentUser)
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    console.log(user[0])
+    console.log(user)
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const [mobileOpen, setMobileOpen] = React.useState(false);
+
+    const handleDrawerToggle = () => {
+      setMobileOpen(!mobileOpen);
+    };
+
+    
 
     const handelLogout= async()=>{
       try{
@@ -140,7 +153,23 @@ const useStyles = makeStyles((theme) => ({
     //fetch user
 
    
-  
+    const drawer = (
+      <div>
+      
+     
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+             
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
     const menuId = 'primary-search-account-menu';
     const renderMenu = (
       <Menu
@@ -255,6 +284,7 @@ const useStyles = makeStyles((theme) => ({
         
         {renderMobileMenu}
         {renderMenu}
+      
         
         
       </div>

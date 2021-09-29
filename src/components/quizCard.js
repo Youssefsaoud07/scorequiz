@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect,useContext,useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -15,6 +15,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/Context';
+import app from '../configs/authMethod';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,9 +49,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function QCard({value}) {
+  const [Score, setScore] = useState(null)
   const classes = useStyles();
+  const {currentUser}=useContext(AuthContext)
+ 
   const [expanded, setExpanded] = React.useState(false);
-  
+  console.log('quizkalba',value.quiz)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -56,8 +62,12 @@ export default function QCard({value}) {
 
   return (
     <Card className={classes.root}>
-      
+      <Link to={{
+    pathname: "/courses",
+    state: { quiz:value.quiz}
+  }}>
       <CardMedia
+        
         className={classes.media}
         image={value.image}
         title="Paella dish"
@@ -66,7 +76,7 @@ export default function QCard({value}) {
       <div style={{position:'relative',bottom:'55px',color:'#fff',height:0,display:'flex',justifyContent:'space-between',textAlign:'start'}}>
         <div>
       <p style={{fontSize:14,fontWeight:'bold'}}>{value.title}</p>
-      <p style={{fontSize:12}}>{value.students} students</p>
+      <p style={{fontSize:12}}>{value.students} Students</p>
       </div>
       <p>{value.rating}</p>
       </div>
@@ -74,7 +84,7 @@ export default function QCard({value}) {
       
        
         
-      
+      </Link>
      
     </Card>
   );

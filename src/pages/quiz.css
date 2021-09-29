@@ -1,0 +1,45 @@
+.answerB {
+        width: 650px;
+        height:70px;
+        background-color:#fff;
+        
+        color:black;
+        margin:10px;
+        border-radius:13px;
+}       
+        
+.answerB:hover {
+    background-color: grey; /* Green */
+     color: white;
+  }
+.answerBCorrect{
+    width: 650px;
+    height:60px;
+    background-color:#02F91B;
+    
+    color:#fff;
+    margin:10px;
+    border-radius:13px;
+
+}
+.disabled{
+    width: 650px;
+    height:70px;
+    background-color:#fff;
+    
+    color:black;
+    margin:10px;
+    border-radius:13px;
+    
+    
+}
+.answerBfalse{
+    width: 650px;
+    height:60px;
+    background-color:#FF4260;
+    
+    color:#fff;
+    margin:10px;
+    border-radius:13px;
+
+}

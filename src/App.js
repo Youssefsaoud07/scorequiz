@@ -9,6 +9,10 @@ import PrivateRoute from './routes/privateRoute';
 
 import LandingPage from './pages/LandingPage';
 import Course from './pages/Course';
+import Quiz from './pages/Quiz';
+import Auth from './pages/auth';
+import CourseStart from './pages/CourseStart';
+
 
 const theme = createTheme({
   palette: {
@@ -28,16 +32,20 @@ function App() {
       
     <ThemeProvider theme={theme}>
       <AuthProvider>
-    <Router>
+     
+     <Router>
     <div className="App">
     <Switch>
     <PrivateRoute exact path="/welcome" component={Home} />
     <Route exact path="/login" component={SignInSide} />
     <Route exact path="/" component={LandingPage} />
-    <PrivateRoute exact path="/Courses" component={Course} />
+    <PrivateRoute exact path="/Courses" component={CourseStart} />
     </Switch>
-   </div>
-     </Router>
+   </div> 
+    
+     </Router> 
+     {/* <Quiz /> */}
+    
      </AuthProvider>
     </ThemeProvider>
     
