@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "corequiz-b56e0"
-  }
+    "corequiz": "corequiz-5553d"
+  },
+  "targets": {}
 }

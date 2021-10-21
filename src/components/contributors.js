@@ -39,7 +39,7 @@ const Contrib = () => {
     return (
         <div style={{justifyContent:'center',padding :20,flexWrap:'wrap'}}>
             <div>
-                <h2>Trusted Contributers</h2>
+                <h2>Trusted Contributors</h2>
                 <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem</p>
             </div>
             <div className="users">
@@ -47,7 +47,7 @@ const Contrib = () => {
                 <div>
                
                <Avatar name='Quiz Contributors' src={user.image} round={true} color={'#F3105F'}/>
-               <div className="user">{user.username}</div>
+               {/* <div className="user">{user.username}</div> */}
                <div className="date">{user.date}</div>
                 </div>
               ))}

@@ -1,4 +1,4 @@
-import { quiz } from "./sample_valid"
+import { quiz } from "./NeuralNetwork.js"
 export const data = [
     {
         id: 1,

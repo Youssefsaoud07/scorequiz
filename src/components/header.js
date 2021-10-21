@@ -14,9 +14,9 @@ const Header = () => {
     <ReactBootStrap.Nav.Link href="#features">Pricing</ReactBootStrap.Nav.Link>
     
     
-    <ReactBootStrap.Nav.Link href="#pricing">About US</ReactBootStrap.Nav.Link>
-    <ReactBootStrap.Nav.Link href="#pricing">Blog</ReactBootStrap.Nav.Link>
-    <ReactBootStrap.Nav.Link href="#pricing">Login</ReactBootStrap.Nav.Link>
+    <ReactBootStrap.Nav.Link href="#AboutUs">About US</ReactBootStrap.Nav.Link>
+    <ReactBootStrap.Nav.Link href="#Blog">Blog</ReactBootStrap.Nav.Link>
+    <ReactBootStrap.Nav.Link href="/login">Login</ReactBootStrap.Nav.Link>
     
      
     </ReactBootStrap.Nav>
@@ -24,8 +24,8 @@ const Header = () => {
     
     
     
-    <ReactBootStrap.Nav.Link eventKey={2} href="/login"  style={{backgroundColor:'gray',color:'#fff'}} component={Link}
-          to="/login">
+    <ReactBootStrap.Nav.Link  className='button button5' eventKey={2} href="#"  style={{backgroundColor:'#F3105F',color:'#fff'}} component={Link}
+          to="#">
         Start Free Now
       </ReactBootStrap.Nav.Link>
    

@@ -142,3 +142,18 @@ h1 {
     position: '-webkit-sticky';
         position: 'sticky';
   }
+  .CourseButton {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    
+    color: white;
+    padding:5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+   
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 25px;
+  }

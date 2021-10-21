@@ -7,6 +7,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
+import  Lock  from "@material-ui/icons/Lock";
 import People from "@material-ui/icons/People";
 import {SocialIcon} from 'react-social-icons';
 // core components
@@ -53,7 +54,19 @@ const useStyles = makeStyles(styles);
       app.auth()
       .signInWithPopup(provider)
       .then((result) => {
-        console.log('User has signed in.')
+        app.firestore().collection("users").doc(result.user.uid).set({
+          uid:result.user.uid,
+          email:result.user.email,
+          name:result.user.displayName,
+          provider:result.user.providerData[0].providerId,
+          photoUrl:result.user.photoURL,
+          phonenumber:result.user.phoneNumber,
+          
+        }).then((res)=>{
+          console.log('**********',res)
+        })
+         console.log('User has signed in.',result.user)
+        
       history.push('/welcome')
       }).catch((error) => {
         // Handle Errors here.
@@ -140,25 +153,26 @@ const useStyles = makeStyles(styles);
                         defaultValue:password,
                         endAdornment: (
                           <InputAdornment position="end">
-                            <Icon className={classes.inputIconsColor}>
-                              lock_outline
-                            </Icon>
+                            <Lock className={classes.inputIconsColor} />
+                             
+                            
                           </InputAdornment>
                         ),
                         autoComplete: "off",
                       }}
                     />
-                    <div style={{display:'flex',justifyContent:'space-evenly',marginTop:80}}>
+                     <CardFooter className={classes.cardFooter}>
+                    <Button  simple color="primary" size="lg" onClick={()=>{handleLogin()}} >
+                      Get started
+                    </Button>
+                  </CardFooter>
+                    <div style={{display:'flex',justifyContent:'space-evenly',marginTop:20,marginBottom:60}}>
                      <SocialIcon network={'google'} bgColor={'red'} onClick={() => {signInWithGooglePopUp() }}/>
                      <SocialIcon network={'facebook'} bgColor={'blue'} onClick={() => {signInWithGooglePopUp()}}/>
                      <SocialIcon network={'github'} bgColor={'black'} onClick={() => {signInWithGooglePopUp()}}/>
                      </div>
                   </CardBody>
-                  <CardFooter className={classes.cardFooter}>
-                    <Button  simple color="primary" size="lg" onClick={()=>{handleLogin()}} >
-                      Get started
-                    </Button>
-                  </CardFooter>
+                 
                 </form>
               </Card>
             </GridItem>

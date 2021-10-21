@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
           marginTop:50,
           width:260,
           paddingLeft:20,
+          
           [theme.breakpoints.down('sm')]: {
            
            display:'none'
@@ -92,9 +93,10 @@ const CourseStart = ({ children }) => {
 
              ))}
          </List>
-         <Divider orientation="vertical" flexItem  />
+         <Divider orientation="vertical" flexItem style={{width:5,color:'#000',boxShadow:'1px 1px 1px 1px'}}  />
         
         <Grid item xs={12} md={12} lg={8} className={classes.page}>
+        
         <Quiz />
         </Grid>
 

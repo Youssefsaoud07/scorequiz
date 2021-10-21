@@ -9,30 +9,85 @@ import { boxShadow } from '../components/material-kit-react';
 import "./quiz.css"
 import app from '../configs/authMethod';
 import { useLocation } from 'react-router';
+import { EmojiObjects } from '@material-ui/icons';
 
 
 const useStyles = makeStyles((theme) => ({
     container:{
         justifyContent:'center',
        
-        marginTop:20
+        
 
     },
     step:{
+       
+        
+         
         backgroundColor:'#FF4260',
+        boxShadow:'1px 15px 20px #ff6297ec',
         color:"#fff",
         width:30,
         height:30,
         borderWidth:3,
+        borderColor:'#000',
+        margin:20,
+        
         borderRadius:30,
         fontSize:10,
         [theme.breakpoints.down('sm')]: {
             display:'none',
    
            },
+           
+         
     },
+    stepp:{
+       
+        
+         
+        backgroundColor:'#FF4260',
+        color:"#fff",
+        width:30,
+        height:30,
+        borderColor:'#fff',
+        borderWidth:3,
+        margin:10,
+        borderRadius:30,
+        fontSize:10,
+        [theme.breakpoints.down('sm')]: {
+            display:'none',
+   
+           },
+           
+         
+    },
+    stepe:{
+       
+        
+         
+        backgroundColor:'#fff',
+        color:"#fff",
+        width:30,
+        height:30,
+        borderColor:'#fff',
+        borderWidth:3,
+        margin:10,
+        borderRadius:30,
+        fontSize:10,
+        [theme.breakpoints.down('sm')]: {
+            display:'none',
+   
+           },
+           
+         
+    },
+
+ 
+    
     question:{
         justifyContent:'center',
+        marginBottom:'20px',
+
         
         
     },
@@ -70,7 +125,7 @@ const useStyles = makeStyles((theme) => ({
         margin:10,
         borderRadius:13,
         [theme.breakpoints.down('sm')]: {
-            margin:30,
+            margin:20,
    
            },
         color:'#fff',
@@ -90,8 +145,10 @@ const Quiz = () => {
     let data = useLocation();
     
     const quiz=data.state.quiz
+    console.log('currentalinte',data.state)
+    console.log('dataquiz',quiz)
     
-    const [currentQuestion, setCurrentQuestion] = useState(0)
+    const [currentQuestion, setCurrentQuestion] = useState(data.state.course-1)
     const [score, setScore] = useState(0)
     const [clicked, setClicked] = useState(false)
     const [showScore, setShowScore] = useState(false)
@@ -99,6 +156,8 @@ const Quiz = () => {
     const [courseTitle, setCourseTitle] = useState(quiz.title)
     const {currentUser}= useContext(AuthContext)
     const [Clientsdatastored, setClientsdatastored] = useState([])
+    const [Selected, setSelected] = useState('')
+    const [index, setIndex] = useState(0)
     const uid=currentUser.uid
     const title = 'photo'
 
@@ -135,7 +194,7 @@ const Quiz = () => {
     
     
     const handelCorrectAnswer= (isCorrect,value) => {
-        
+        setSelected(value)
         console.log('hedhiiii',Clientsdatastored)
         if(Clientsdatastored[currentQuestion]){
             
@@ -163,16 +222,23 @@ const Quiz = () => {
              
 
          }
-       if(currentQuestion < quiz.quizzes.length -1){
+         
+         console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&',currentQuestion)
+         
+         console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&',quiz.quizzes.length )
+       if(currentQuestion < quiz.quizzes.length ){
            if(currentQuestion >Clientsdatastored.length-1){
         submitScore()
            }
+           if(currentQuestion < quiz.quizzes.length-1)
           setCurrentQuestion(currentQuestion+1) 
+         else  setShowScore(true)
            
           setClicked(false)
           
           
        } else{
+           console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&')
            setShowScore(true)
            
        }
@@ -186,35 +252,67 @@ const Quiz = () => {
             answers:clientAnswers,
             user:currentUser.uid
         }
-        console.log('finaly',scoreClient)
+        console.log('finaly',scoreClient.answers)
         console.log(Clientsdatastored)
         
        
         app.database().ref(uid).update(scoreClient)
 
     }
+   
+   const handelStep =()=>{
+    console.log(index)
+    if(index< Clientsdatastored.length){ 
+        setIndex(index+1)
+        return 'right' 
+   }
+return 'false'
+   }
+
+
+
+
+
+
+
+
     const verfiyAnswer=(a,b)=>{
-         console.log('clicked',clicked)
-         
-        
-         
+        console.log('*********************',Selected)
          if(Clientsdatastored[currentQuestion]){
             console.log('baseaswer',Clientsdatastored[currentQuestion])
              
-            if(a.is_correct===true){ 
-                return "answerBCorrect"    
+            if(Clientsdatastored[currentQuestion]===a.value && a.is_correct===true){ 
+                
+                return {div:"answerBCorrect",check:true}  
            }
+           if(Clientsdatastored[currentQuestion]!==a.value && a.is_correct===true){ 
+                
+            return {div:"answerBCorrect",check:false}  
+       }
+            if(Clientsdatastored[currentQuestion]===a.value && a.is_correct===false){
+                return {div:"answerBfalse",check:true} 
+            }
 
-         }else if(clicked && a.is_correct===true){
-            return "answerBCorrect"    
+         }else if(!Clientsdatastored[currentQuestion] &&  Selected===a.value && clicked && a.is_correct===true){
+           
+            return    {div: "answerBCorrect",check:true} 
+         } if (!Clientsdatastored[currentQuestion] && Selected===a.value && clicked && a.is_correct===false){
+            return    {div: "answerBfalse", check:true} 
+
          }
+         if (!Clientsdatastored[currentQuestion] && Selected!==a.value && clicked && a.is_correct===true){
+            return    {div: "answerBCorrect", check:false} 
+
+         }
+
        
-         if ( a.value===Clientsdatastored[currentQuestion]){
-            console.log('hello')
-            if( a.is_correct===true)
-            return "answerBCorrect button:disabled" 
-            return "answerBfalse button:disabled"
-        }else return "answerB "
+            
+        
+        else{ 
+           
+             return {div:'answerB',check:false}
+
+            }
         
     //     if(Clientsdatastored[currentQuestion]===a){
     //         setClicked(true)
@@ -241,25 +339,38 @@ const Quiz = () => {
                    </Grid> ):(<Grid item sm={12} md={12} className={classes.container}>
                     
                
-                <Stepper activeStep={currentQuestion} alternativeLabel classname={classes.stepper}>
-                    {quiz.quizzes.map((qustion) => (
-                        <Step active key={qustion}>
-                            <button className={classes.step}></button>
-                        </Step>
+                
+                    {quiz.quizzes.map((qustion,key) => (
+                         
+                            
+                          
+                            <button className={ key === currentQuestion?classes.step:key<=Clientsdatastored.length?classes.stepp:classes.stepe} 
+                            
+                            onClick={()=>{setCurrentQuestion(key); setClicked(false)}}
+                             ></button>
+                        
                     ))}
-                </Stepper>
+               
                 
                 <Grid item className={classes.question} >
-                    <Typography variant='body1' style={{fontWeight:'bold'}}>Question {currentQuestion+1}:</Typography>
+                    
+                    <Typography variant='body1' style={{textAlign:'initial',fontSize:12,padding:'0px 10px'}}>{quiz.metadata.title}</Typography>
+                    <Typography variant='body1' style={{fontWeight:'bold',fontSize:12}}>Question {currentQuestion+1}:</Typography>
+                    <Typography>{verfiyAnswer(currentQuestion).dot}</Typography>
                  <Typography variant='body1' fontFamily='roboto' > {quiz.quizzes[currentQuestion].question_body.question}</Typography>
+                  {quiz.quizzes[currentQuestion].question_body?.question_subparts.map((value,key)=>(
+                     <Typography style={{textAlign:'start'}}><EmojiObjects style={{margin:'0px 30px',color:'gold'}} />{value}</Typography>
+                  ))}
                  
                 </Grid>
                 <Grid container xs={12} md={8} className={classes.answersBox}>
-                {quiz.quizzes[currentQuestion].options.map((answerOption)=>(
-                <button className={`${verfiyAnswer(answerOption)}`}
+                {quiz.quizzes[currentQuestion].question_body.options.map((answerOption)=>(
+                <div className={`${verfiyAnswer(answerOption).div}`}
                  onClick={()=>handelCorrectAnswer(answerOption.is_correct,answerOption.value)}
                 
-                 >{answerOption.value}</button>
+                 > {verfiyAnswer(answerOption).check?
+                 <input type="radio"  checked="checked"  name="radio" />:<input type="radio"  name="radio" />}
+                 {answerOption.value.text}<img src={answerOption.value?.img} style={{width:50,height:50,borderRadius:35}} /></div>
                  
                 ))}
                    

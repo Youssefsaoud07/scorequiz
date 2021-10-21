@@ -2,68 +2,122 @@
         width: 650px;
         height:70px;
         background-color:#fff;
-        
+        box-shadow: 1px 1px 1px 1px grey;
+        text-align: justify;
+        padding: 10px;
+        align-self: center;
         color:black;
         margin:10px;
         border-radius:13px;
+        text-align: justify;
+        display: flex;
+        align-items: center;
+        gap:5px;
+        display: flex;
+        justify-content: space-between;
+        padding:'0 30px';
 }       
         
 .answerB:hover {
-    background-color: grey; /* Green */
-     color: white;
+     /* Green */
+    
   }
 .answerBCorrect{
     width: 650px;
     height:60px;
-    background-color:#02F91B;
-    
-    color:#fff;
+    background-color:#fff;
+    border-color: green;
+    border-width: 3px;
+    box-shadow: 2px 2px 15px 1px rgb(16, 204, 28);
+    text-align: justify;
+    color:rgb(0, 0, 0);
     margin:10px;
     border-radius:13px;
-
+    padding: 10px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap:5px;
+    display: flex;
+    justify-content: space-between;
+    padding:'0 30px';
 }
 .disabled{
     width: 650px;
     height:70px;
     background-color:#fff;
-    
+    box-shadow: 1px 1px 1px 1px grey;
+    text-align: justify;
+    padding: 10px;
+    align-self: center;
     color:black;
     margin:10px;
     border-radius:13px;
-    
+    display: flex;
+    align-items: center;
+    gap:5px;
+    display: flex;
+    justify-content: space-between;
+    padding:'0 30px';
     
 }
 .answerBfalse{
     width: 650px;
     height:60px;
     background-color:#FF4260;
-    
+    box-shadow: 1px 1px 1px 1px grey;
+    text-align: justify;
+    padding: 10px;
     color:#fff;
     margin:10px;
     border-radius:13px;
-
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap:5px;
+    display: flex;
+    justify-content: space-between;
+    padding:'0 30px';
 }
 @media screen and (max-width: 700px){
     .answerB {
     width: 290px;
-    height: 80px;
+    height: 90px;
     font-size: 10;
 }
     .disabled{
         width: 290px;
-        height: 80px;
+        height: 90px;
         font-size: 10;
     }
     .answerBfalse{
         width: 290px;
-        height: 80px;
+        height: 90px;
         font-size: 10;
     }
     .answerBCorrect{
         width: 290px;
-        height: 80px;
+        height: 90px;
         font-size: 10;
     }
 
+}
+.right{
+    background-color:green;
+    color: #fff;
+    width:30;
+    height:30;
+    border-width:3;
+    border-radius:30;
+    font-size:10;
+}
+.false{
+    background-color:rgb(128, 0, 0);
+    color: #fff;
+    width:30;
+    height:30;
+    border-width:3;
+    border-radius:30;
+    font-size:10;
 }
 

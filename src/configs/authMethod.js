@@ -2,12 +2,12 @@ import firebase from "firebase/app"
 import{getFirestore} from "firebase/firestore"
 import "firebase/auth";
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyCVx-xbE5e5RzktgTBRUToNY9qgFg9yu3A",
-  authDomain: "corequiz-b56e0.firebaseapp.com",
-  projectId: "corequiz-b56e0",
-  storageBucket: "corequiz-b56e0.appspot.com",
-  messagingSenderId: "154252341369",
-  appId: "1:154252341369:web:f0bc294114d44ceb34a4a8",
-  measurementId: "G-X6YWEKJD45"
+  apiKey: "AIzaSyCUKj62vAWg1y1lb9c7iADUmsRHyBBQFVk",
+  authDomain: "corequiz-5553d.firebaseapp.com",
+  projectId: "corequiz-5553d",
+  storageBucket: "corequiz-5553d.appspot.com",
+  messagingSenderId: "433520386811",
+  appId: "1:433520386811:web:a3d9f1563bf9d16a88c65e",
+  measurementId: "G-8TJDR50V4N"
 });
 export default app

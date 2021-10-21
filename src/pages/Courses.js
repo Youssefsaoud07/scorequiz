@@ -9,7 +9,7 @@ import '../components/heros.css'
 import BCard from '../components/cardsBottom';
 import Footer from '../components/footer';
 import Auth from './auth';
-
+import { Carousel } from 'react-bootstrap';
 import { ButtonBase, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { data } from '../dummy';
@@ -41,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
         display:'flex',
         fontFamily: 'roboto',
         color: 'black',
-        height:390,
+        height:100,
+        alignItems:'flex_start',
+        paddingTop:40,
+        justifyContent:'center',
        
        backgroundColor: 'rgb(248,248,248)',
        
@@ -61,18 +64,20 @@ const useStyles = makeStyles((theme) => ({
         flexWrap:'wrap',
         display:'flex',
         width:'100%',
+        padding:'10px 50px',
         
         justifyContent:'center',
         padding:'10px 20px 50px 30px',
         fontFamily:'roboto',
-        gap:'45px'
+        gap:'100px'
 
 
     },
     cardContainer:{
         width:'100%',
-        marginTop:30,
+        
         fontFamily:'roboto',
+        padding:'10px 30px',
         [theme.breakpoints.down('md')]: {
             marginTop:10,
             
@@ -95,7 +100,8 @@ const useStyles = makeStyles((theme) => ({
     blog:{
         width:'100%',
         justifyContent:'center',
-        marginLeft:100,
+        
+        padding:'30px 70px'
 
     },
     adContainer:{
@@ -124,6 +130,16 @@ const useStyles = makeStyles((theme) => ({
           },
 
     },
+    tags:{
+        display:'flex',
+        flexWrap:'wrap',
+        justifyContent:'center',
+        alignItems:'center',
+        padding:'50px 50px',
+        backgroundColor: 'rgb(248,248,248)',
+        gap:60,
+        padding:'10px 300px'
+    }
     
   
 
@@ -132,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Home = () => {
+const Courses = () => {
     
   
 
@@ -186,21 +202,21 @@ const Home = () => {
         <Grid container component="main" className={classes.root}   >
           
             <Grid item component="div" display="inline" className={classes.heros}xs={12} md={12} lg={12}>
-                <Grid item className={classes.slider}>
-                <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}><Typography variant='h4' fontFamily='roboto'>Online Quiz Courses Catalogue</Typography></h3>
-                <Typography fontFamily='roboto' style={{marginBottom:20}}>It is a long established fact that a reader will  distracted by the readable of content of  page when looking at its layout.</Typography>
-                <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  />
-                <button class="button searchButton3" style={{marginLeft:'-80px'}}>search</button>
-                
-                    {/* <button className="button button3" onClick={()=>createCheckoutSession(currentUser.uid)}>Join CoreQuiz</button> */}
-                
-                </Grid>
-                <Grid item className={classes.background}>
-                <img    src={background} style={{width:800,height:390, borderRadius:' 10% 0 10%  0' }} />
-                </Grid>
+            <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  />
+                <button className="button searchButton3" style={{marginLeft:'-80px',width:80,height:50,alignItems:'center'}}>search</button>
+               
             </Grid>
+            <Grid className={classes.tags} xs={12}>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 1</button>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 2</button>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 3</button>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 4</button>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 5</button>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 5</button>
+                <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 5</button>
+                </Grid>
             <Box component="div" display="inline" className={classes.cardContainer}>
-            <Typography fontFamily='roboto' variant='h6' style={{fontWeight:'bold'}}>Popular Quiz Courses</Typography>
+            <Typography fontFamily='roboto' variant='h6' style={{fontWeight:'bold',textAlign:'initial',padding:'5px 30px'}}>Popular Quiz Courses</Typography>
                 <Box component="div" display="inline" className={classes.cards}>
                 {items.map((value,key)=>(
                     <QCard value={value} />
@@ -208,36 +224,20 @@ const Home = () => {
                 </Box>
                
             </Box>
-            <Grid container spacing={0} style={{gap:1 ,justifyContent:'center'}} >
-               <Grid item xs={12} md={6} lg={5} className={classes.adContainer} >ads</Grid>
-               <Grid item xs={12} md={6} lg={5} className={classes.adContainer} >ads</Grid>
-                </Grid>
+            
 
-                <Box style={{display:'flex',justifyContent:'center',width:'100%',paddingTop:40}}>
-                  <button className='button4' onClick={()=>setFlitredData({filtered:'category 1'})}></button>
-                  <button className='button4'onClick={()=> setFlitredData({filtered:'category 2'})}></button>
-                  <button className='button4' onClick={()=>setFlitredData({filtered:'category 3'})}></button>
-                  <button className='button4' onClick={()=>setFlitredData({filtered:'category 4'})}></button>
-                  <button className='button4' onClick={()=>setFlitredData({filtered:'category 5'})}></button>
-                  <button className='button4' onClick={()=>setFlitredData({filtered:'category 6'})}></button>
-
-                </Box>
+               
                 <Box component="div" display="inline" className={classes.cardContainer}>
                 
-                <Box component="div" display="inline" className={classes.cards}>
-                   
-                {items2.map((value,key)=>(
-                    <QCard value={value} />
-                ))}
-                </Box>
+                
                
             </Box>
             <Box className={classes.blog}>
-                <Typography fontFamily='roboto' variant='h6' style={{textAlign:'start',fontWeight:'bold'}} > Blogs</Typography>
+                <Typography fontFamily='roboto' variant='h6' style={{textAlign:'start',fontWeight:'bold'}} > Group of Courses</Typography>
                 </Box>
                 <Box component="div" display="inline"  className={classes.cards} >
-                {itemsB.map((value,key)=>(
-                    <BCard value={value} />
+                {data.map((value,key)=>(
+                    <QCard value={value} />
                 ))}
                </Box>
                
@@ -248,4 +248,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Courses

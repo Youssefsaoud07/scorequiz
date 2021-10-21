@@ -59,7 +59,7 @@ export default function QCard({value}) {
   const {currentUser}=useContext(AuthContext)
  
   const [expanded, setExpanded] = React.useState(false);
-  console.log('quizkalba',value.quiz)
+  console.log('quizkalba',value)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -68,8 +68,8 @@ export default function QCard({value}) {
   return (
     <Card className={classes.root}>
       <Link style={{textDecoration:'none',fontFamily:'roboto'}} to={{
-    pathname: "/courses",
-    state: { quiz:value.quiz}
+    pathname: "/course",
+    state:  value
   }}>
       <CardMedia
         

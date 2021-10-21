@@ -54,15 +54,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Login = ({ history }) => {
-    
+    console.clear()
     const classes = useStyles();
     const provider = new firebase.auth.GoogleAuthProvider();
     const [user, setUser] = useState(null);
+    console.log("start")
     const signInWithGooglePopUp=()=> {
       app.auth()
       .signInWithPopup(provider)
       .then((result) => {
-        console.log('User has signed in.')
+        console.log('##################',result)
+       app.firestore().collection("users").doc(result.user.uid).set({
+         uid:result.user.uid,
+         email:result.user.email,
+         name:result.user.displayName,
+         provider:result.user.providerData[0].providerId,
+         
+       }).then((res)=>{
+         console.log('**********',res)
+       })
+        console.log('User has signed in.',result.user)
       }).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
@@ -130,6 +141,7 @@ const Login = ({ history }) => {
               type="password"
               id="password"
               autoComplete="current-password"
+              className={classes.input}
               
             />
             <FormControlLabel
