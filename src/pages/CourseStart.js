@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
     active: {
         background: '#f4f4f4',
+        fontWeight:'bold'
        
       },
       corses:{
@@ -39,36 +40,30 @@ const useStyles = makeStyles((theme) => ({
           
       }
 }))
+const ChappitreMenu = [
+    {
+        id:1,
+        text:'Support Vector Machine',
+        path:'courses/ch1',
+    },
+    {
+        id:2,
+        text:'Support Vector Machine',
+        path:'courses/ch2',
+    },
+  
+
+];
 const drawerWidth = 240;
 const CourseStart = ({ children }) => {
     const{currentUser}=useContext(AuthContext)
     const classes=useStyles()
     const history=useHistory()
     const location = useLocation()
+    console.log("loc",location)
 
-    const ChappitreMenu = [
-        {
-            text:'chappitre 1',
-            path:'courses/ch1',
-        },
-        {
-            text:'chappitre 2',
-            path:'courses/ch2',
-        },
-        {
-            text:'chappitre 3',
-            path:'/ch3',
-        },
-        {
-            text:'chappitre 4',
-            path:'/ch4',
-        },
-        {
-            text:'chappitre 5',
-            path:'/ch5',
-        }
 
-    ];
+   
 
     
 
@@ -84,9 +79,9 @@ const CourseStart = ({ children }) => {
          <List className={classes.coursesList}>
              {ChappitreMenu.map(item =>(
                  <ListItem
-                 key={item.text}
+                 key={item.id}
                  
-                 className={location.pathname == item.path ? classes.active : classes.courses}
+                 className={location.state.course.key == item.id ? classes.active : classes.courses}
                  >
                  <ListItemText primary={item.text}/>
                  </ListItem>

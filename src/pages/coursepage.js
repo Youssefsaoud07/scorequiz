@@ -17,7 +17,7 @@ import QueryBuilder from '@material-ui/icons/QueryBuilder'
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 
-const courseData = [1, 2]
+const courseData = [{key: 1, value: 'Support Vector Machine'},{key: 1, value: 'Support Vector Machine'}]
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -138,12 +138,12 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const CoursePage = () => {
-    let data = useLocation();
+const CoursePage = ({match}) => {
+   
 
     const classes = useStyles();
-    const quiz = data.state.quiz
-    console.log(quiz)
+ 
+    console.log('dddddddddddd',)
 
     return (
 
@@ -167,7 +167,7 @@ const CoursePage = () => {
                     </div>
                     <Link style={{ textDecoration: 'none', fontFamily: 'roboto' }} to={{
                         pathname: "/courses",
-                        state:  quiz 
+                       
                     }}>
                     <button class ="button button4" style={{width: 200,height: 70, backgroundColor: '#F0A8E5',color: '#fff',fontWeight: 'bold'}}>Free Register</button>
                    </Link>
@@ -242,7 +242,7 @@ const CoursePage = () => {
                         <Grid Item classeName={classes.courseTitle} >
                         <Link style={{ textDecoration: 'none', fontFamily: 'roboto' }} to={{
                         pathname: "/courses",
-                        state:  {quiz,course} 
+                        // state:  {quiz,course} 
                     }}>
                             <Typography variant='body1'>chapter</Typography>
                             <Typography variant='h4' style={{ fontSize: 79 }}>{course}</Typography>

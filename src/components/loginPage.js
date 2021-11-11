@@ -48,6 +48,8 @@ const useStyles = makeStyles(styles);
 
   //logic code
   const provider = new firebase.auth.GoogleAuthProvider();
+  const facebookProvider = new firebase.auth.FacebookAuthProvider();
+  const githubProvider = new firebase.auth.GithubAuthProvider();
     const [user, setUser] = useState(null);
 
     const signInWithGooglePopUp=()=> {
@@ -80,6 +82,66 @@ const useStyles = makeStyles(styles);
       });
   
     }
+     //facebook login 
+
+     const signInWithFacebookPopUp=()=> {
+      app.auth()
+      .signInWithPopup(facebookProvider)
+      .then((result) => {
+        console.log('##################',result)
+       app.firestore().collection("users").doc(result.user.uid).set({
+         uid:result.user.uid,
+         email:result.user.email,
+         name:result.user.displayName,
+         provider:result.user.providerData[0].providerId,
+         
+       }).then((res)=>{
+         console.log('**********',res)
+       })
+        console.log('User has signed in.',result.user)
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log(`Errors occurred during sign in: ${errorCode}, ${errorMessage}, ${email}, ${credential}`)
+      });
+  
+    }
+
+    //github login 
+
+    const signInWithGithubPopUp=()=> {
+      app.auth()
+      .signInWithPopup(githubProvider)
+      .then((result) => {
+        console.log('##################',result)
+       app.firestore().collection("users").doc(result.user.uid).set({
+         uid:result.user.uid,
+         email:result.user.email,
+         name:result.user.displayName,
+         provider:result.user.providerData[0].providerId,
+         
+       }).then((res)=>{
+         console.log('**********',res)
+       })
+        console.log('User has signed in.',result.user)
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log(`Errors occurred during sign in: ${errorCode}, ${errorMessage}, ${email}, ${credential}`)
+      });
+  
+    }
+    //.....
   const handleLogin = async()=>{
    
      
@@ -168,8 +230,8 @@ const useStyles = makeStyles(styles);
                   </CardFooter>
                     <div style={{display:'flex',justifyContent:'space-evenly',marginTop:20,marginBottom:60}}>
                      <SocialIcon network={'google'} bgColor={'red'} onClick={() => {signInWithGooglePopUp() }}/>
-                     <SocialIcon network={'facebook'} bgColor={'blue'} onClick={() => {signInWithGooglePopUp()}}/>
-                     <SocialIcon network={'github'} bgColor={'black'} onClick={() => {signInWithGooglePopUp()}}/>
+                     <SocialIcon network={'facebook'} bgColor={'blue'} onClick={() => {signInWithFacebookPopUp()}}/>
+                     <SocialIcon network={'github'} bgColor={'black'} onClick={() => {signInWithGithubPopUp()}}/>
                      </div>
                   </CardBody>
                  

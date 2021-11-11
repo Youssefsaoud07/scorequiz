@@ -2,7 +2,7 @@ import React,{useState,useEffect,useContext} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import firebase from 'firebase';
+
 import TextField from '@material-ui/core/TextField';
 import QCard from '../components/quizCard'
 import '../components/heros.css'
@@ -10,17 +10,20 @@ import BCard from '../components/cardsBottom';
 import Footer from '../components/footer';
 import Auth from './auth';
 
-import { ButtonBase, Typography } from '@material-ui/core';
+import { ButtonBase, CircularProgress, Typography } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { data } from '../dummy';
-import { Image } from '@material-ui/icons';
+
+
 import background from '../assets/img/home.png'
-import { height } from 'dom-helpers';
-import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
+
 import '../components/heros.css'
-import app from '../configs/authMethod';
+
 import { AuthContext } from '../context/Context';
-import { createCheckoutSession } from '../Stripe/createCheckoutSession';
+import app from "../configs/authMethod";
+
+import 'firebase/firestore'
+
+
 
 
 //data
@@ -132,9 +135,114 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+
 const Home = () => {
+   
     
-  
+  const [loading, setLoading] = useState(true)
+  const [coursess, setCoursess] = useState([])
+  const data = [
+    {
+        id: 1,
+        type: 'category 1',
+        title: 'Photography',
+        students: 200,
+        rating: 4.1,
+        image: 'https://www.eurodiaconia.org/wordpress/wp-content/uploads/2017/08/photography.jpeg',
+      
+
+    },
+    {
+        id: 2,
+        type: 'category 1',
+        title: 'Video Production',
+        students: 200,
+        rating: 4.1,
+        image: 'https://www.breezpost.com/wp-content/uploads/2020/10/Video-Production-Company.jpg',
+     
+    },
+    {
+        id: 3,
+        type: 'category 2',
+        title: 'Adobe Lightroom',
+        students: 200,
+        rating: 4.1,
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO2MwKnZw8kbS9rmkPVzKeJJOau1EnPKTHUPEk4jXhZR4plJkh-s0obkR9WpIyetJyVA8&usqp=CAU',
+       
+    },
+    {
+        id: 4,
+        type: 'category 1',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+       
+    },
+    {
+        id: 5,
+        type: 'category 1',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+       
+    },
+    {
+        id: 6,
+        type: 'category 1',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+       
+    },
+    {
+        id: 7,
+        type: 'category 1',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+      
+    },
+    {
+        id: 8,
+        type: 'category 3',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+        
+    },
+    {
+        id: 9,
+        type: 'category 1',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+       
+    },
+    {
+        id: 10,
+        type: 'category 2',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+     
+    },
+    {
+        id: 11,
+        type: 'category 2',
+        title: 'Video Editing',
+        students: 200,
+        rating: 4.1,
+        image: 'https://cdn.mos.cms.futurecdn.net/iiVac4HpTLWCc8La2iijRL.jpg',
+         
+    },
+]
 
     const {currentUser}=useContext(AuthContext)
     
@@ -152,7 +260,34 @@ const Home = () => {
             var uid = currentUser.uid;
             console.log(`User has signed in with UID: ${uid}`)
             setUser(currentUser)
-            
+            // const getDataFromDataBase=[];
+            // const subscriber= app.firestore().collection('chapters').onSnapshot((querySnapshot)=>{
+            //     querySnapshot.forEach((doc)=>{
+            //         getDataFromDataBase.push({
+            //             ...doc.data(),
+            //             key:doc.id
+
+            //         })
+            //         setCourse(getDataFromDataBase)
+            //         setLoading(false)
+            //     })
+            // })
+            // return ()=>subscriber()
+            const getDataFromDataBase=[];
+            const subscriber= app.firestore().collection('courses').onSnapshot((querySnapshot)=>{
+                querySnapshot.forEach((doc)=>{
+                    getDataFromDataBase.push({
+                        ...doc.data(),
+                        key:doc.id
+
+                    })
+                    setCoursess([... getDataFromDataBase])
+                   
+                    setLoading(false)
+                })
+            })
+            return ()=>subscriber()
+
           } else {
             // User is signed out
             console.log('User is not signed in.')
@@ -160,6 +295,7 @@ const Home = () => {
           }
         
       }, [])
+      console.log('fireStore',coursess)
     
     const [filtredData, setFlitredData] = useState(
         {
@@ -173,7 +309,7 @@ const Home = () => {
     var items = data.slice(0, size)
     var itemsB= data.slice(0, sizeB)
     
-    
+    console.log('coursesbase',coursess)
    
     
     const show = data.filter(item =>(
@@ -183,16 +319,16 @@ const Home = () => {
     return (
         <>
         <Auth user={user} />
-        <Grid container component="main" className={classes.root}   >
+       {loading?<CircularProgress  color="secondary" />:<Grid container component="main" className={classes.root}   >
           
             <Grid item component="div" display="inline" className={classes.heros}xs={12} md={12} lg={12}>
                 <Grid item className={classes.slider}>
                 <h3 style={{ color: '#F3105F', fontFamily:'roboto' }}><Typography variant='h4' fontFamily='roboto'>Online Quiz Courses Catalogue</Typography></h3>
                 <Typography fontFamily='roboto' style={{marginBottom:20}}>It is a long established fact that a reader will  distracted by the readable of content of  page when looking at its layout.</Typography>
-                <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  />
-                <button class="button searchButton3" style={{marginLeft:'-80px'}}>search</button>
+                {/* <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  /> */}
+                {/* <button class="button searchButton3" style={{marginLeft:'-80px'}}>search</button> */}
                 
-                    {/* <button className="button button3" onClick={()=>createCheckoutSession(currentUser.uid)}>Join CoreQuiz</button> */}
+                   
                 
                 </Grid>
                 <Grid item className={classes.background}>
@@ -201,8 +337,9 @@ const Home = () => {
             </Grid>
             <Box component="div" display="inline" className={classes.cardContainer}>
             <Typography fontFamily='roboto' variant='h6' style={{fontWeight:'bold'}}>Popular Quiz Courses</Typography>
+            
                 <Box component="div" display="inline" className={classes.cards}>
-                {items.map((value,key)=>(
+                {coursess.map((value,key)=>(
                     <QCard value={value} />
                 ))}
                 </Box>
@@ -226,7 +363,7 @@ const Home = () => {
                 
                 <Box component="div" display="inline" className={classes.cards}>
                    
-                {items2.map((value,key)=>(
+                {coursess.map((value,key)=>(
                     <QCard value={value} />
                 ))}
                 </Box>
@@ -243,7 +380,7 @@ const Home = () => {
                
             <Footer />
                   
-        </Grid>
+        </Grid>} 
         </>
     )
 }

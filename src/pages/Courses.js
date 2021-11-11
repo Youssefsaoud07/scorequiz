@@ -20,7 +20,7 @@ import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
 import '../components/heros.css'
 import app from '../configs/authMethod';
 import { AuthContext } from '../context/Context';
-import { createCheckoutSession } from '../Stripe/createCheckoutSession';
+
 
 
 //data
@@ -150,7 +150,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Courses = () => {
     
-  
+    const [loading, setLoading] = useState(true)
+    const [coursess, setCoursess] = useState([])
 
     const {currentUser}=useContext(AuthContext)
     
@@ -168,6 +169,21 @@ const Courses = () => {
             var uid = currentUser.uid;
             console.log(`User has signed in with UID: ${uid}`)
             setUser(currentUser)
+
+            const getDataFromDataBase=[];
+            const subscriber= app.firestore().collection('courses').onSnapshot((querySnapshot)=>{
+                querySnapshot.forEach((doc)=>{
+                    getDataFromDataBase.push({
+                        ...doc.data(),
+                        key:doc.id
+
+                    })
+                    setCoursess([... getDataFromDataBase])
+                   
+                    setLoading(false)
+                })
+            })
+            return ()=>subscriber()
             
           } else {
             // User is signed out
@@ -202,11 +218,11 @@ const Courses = () => {
         <Grid container component="main" className={classes.root}   >
           
             <Grid item component="div" display="inline" className={classes.heros}xs={12} md={12} lg={12}>
-            <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  />
-                <button className="button searchButton3" style={{marginLeft:'-80px',width:80,height:50,alignItems:'center'}}>search</button>
+            {/* <input id="filled-search" placeholder='start your search' style={{width:'70%',paddingLeft:15 ,borderRadius:30,borderWidth:0,offset:4, fontFamily:'roboto' ,height:50,boxShadow:'1px 1px 1px 0px #F3105F'}}  />
+                <button className="button searchButton3" style={{marginLeft:'-80px',width:80,height:50,alignItems:'center'}}>search</button> */}
                
             </Grid>
-            <Grid className={classes.tags} xs={12}>
+            {/* <Grid className={classes.tags} xs={12}>
                 <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 1</button>
                 <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 2</button>
                 <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 3</button>
@@ -214,11 +230,11 @@ const Courses = () => {
                 <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 5</button>
                 <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 5</button>
                 <button className="button searchButton3" style={{width:120,height:50,alignItems:'center'}}>Tag 5</button>
-                </Grid>
+                </Grid> */}
             <Box component="div" display="inline" className={classes.cardContainer}>
             <Typography fontFamily='roboto' variant='h6' style={{fontWeight:'bold',textAlign:'initial',padding:'5px 30px'}}>Popular Quiz Courses</Typography>
                 <Box component="div" display="inline" className={classes.cards}>
-                {items.map((value,key)=>(
+                {coursess.map((value,key)=>(
                     <QCard value={value} />
                 ))}
                 </Box>
@@ -236,7 +252,7 @@ const Courses = () => {
                 <Typography fontFamily='roboto' variant='h6' style={{textAlign:'start',fontWeight:'bold'}} > Group of Courses</Typography>
                 </Box>
                 <Box component="div" display="inline"  className={classes.cards} >
-                {data.map((value,key)=>(
+                {coursess.map((value,key)=>(
                     <QCard value={value} />
                 ))}
                </Box>

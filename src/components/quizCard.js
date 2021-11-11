@@ -18,6 +18,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
 import app from '../configs/authMethod';
+import { Star } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
     position:'relative',
     textAlign: 'center',
     color: 'white',
+    backgroundColor:'#F5E1EC'
 
   },
   expand: {
@@ -59,7 +61,7 @@ export default function QCard({value}) {
   const {currentUser}=useContext(AuthContext)
  
   const [expanded, setExpanded] = React.useState(false);
-  console.log('quizkalba',value)
+ console.log('con',value.chapters)
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -68,22 +70,22 @@ export default function QCard({value}) {
   return (
     <Card className={classes.root}>
       <Link style={{textDecoration:'none',fontFamily:'roboto'}} to={{
-    pathname: "/course",
-    state:  value
+    pathname: `/course/:${value.Course}`,
+    state:  value.Course
   }}>
       <CardMedia
         
         className={classes.media}
-        image={value.image}
+        
         title="Paella dish"
         
       />
-      <div style={{position:'relative',bottom:'55px',color:'#fff',height:0,display:'flex',justifyContent:'space-between',textAlign:'start', fontFamily:'roboto',}}>
+      <div style={{position:'relative',bottom:'89px',color:'#000',height:0,display:'flex',justifyContent:'space-between',textAlign:'start', fontFamily:'roboto',}}>
         <div>
-      <p style={{fontSize:14,fontWeight:'bold',padding:9,fontFamily:'roboto'}}>{value.title}</p>
-      <p style={{fontSize:14,padding:9,fontFamily:'roboto'}}>{value.students} Students</p>
+      <Typography style={{fontSize:19,fontWeight:'bold',padding:9,fontFamily:'roboto'}}>{value.Course}</Typography>
+      <Typography style={{fontSize:14,padding:9,color:'#000',fontFamily:'roboto'}}>{value.students} Students</Typography>
       </div>
-      <p style={{fontSize:14,padding:9,fontFamily:'roboto'}}>{value.rating}</p>
+      <Typography style={{fontSize:19,padding:9,color:'#000',fontFamily:'roboto'}}>4.6 <Star /> </Typography>
       </div>
       
       

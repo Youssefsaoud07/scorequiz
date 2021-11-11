@@ -171,14 +171,17 @@ export default function Auth() {
 
 
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
+      <Link className={classes.menu} to={{
+                pathname: "/learn",
+                
+              }} style={{ textDecoration: 'none' }}  ><div className={classes.appMenu}>Course</div></Link>
+              <Link  to={{
+                pathname: "/about-us",
+                
+              }} className={classes.menu} style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>About us</div></Link>
+              <Link className={classes.menu} to={{pathname:"/blog"}} style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>Blog</div></Link>
 
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+
       </List>
     </div>
   );
@@ -211,20 +214,8 @@ export default function Auth() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="mails" color="inherit">
-          <Badge color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
+      {drawer}
+       
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -250,6 +241,7 @@ export default function Auth() {
               className={classes.menuButton}
               color="inherit"
               aria-label="open drawer"
+             
             >
               <MenuIcon />
 
@@ -268,7 +260,10 @@ export default function Auth() {
                 pathname: "/learn",
                 
               }} style={{ textDecoration: 'none' }}  ><div className={classes.appMenu}>Course</div></Link>
-              <Link className={classes.menu} style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>About us</div></Link>
+              <Link  to={{
+                pathname: "/about-us",
+                
+              }} className={classes.menu} style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>About us</div></Link>
               <Link className={classes.menu} to={{pathname:"/blog"}} style={{ textDecoration: 'none' }} ><div className={classes.appMenu}>Blog</div></Link>
 
 
@@ -286,6 +281,7 @@ export default function Auth() {
             </div>) : (<div></div>)}
           {user ? (
             <div className={classes.sectionMobile}>
+              
               <IconButton
                 aria-label="show more"
                 aria-controls={mobileMenuId}
@@ -302,6 +298,7 @@ export default function Auth() {
 
       {renderMobileMenu}
       {renderMenu}
+     
 
 
 

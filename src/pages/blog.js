@@ -20,7 +20,7 @@ import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
 import '../components/heros.css'
 import app from '../configs/authMethod';
 import { AuthContext } from '../context/Context';
-import { createCheckoutSession } from '../Stripe/createCheckoutSession';
+
 
 
 //data

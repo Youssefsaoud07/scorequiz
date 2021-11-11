@@ -1,0 +1,46 @@
+{
+  "quizzes": [
+    {
+      "question_body": {
+        "question": "Company name?",
+        "question_subparts": [],
+        "images": [],
+        "quizz_metadata": {
+          "qid": "2021000004",
+          "tags": [],
+          "created": "30/10/2021 23/55/25"
+        }
+      },
+      "options": [
+        { "is_correct": true, "value": { "text": ["Corequiz"], "img": [] } },
+        { "is_correct": false, "value": { "text": ["CoreQuiz"], "img": [] } }
+      ],
+      "explanation": { "text": [], "img": [] }
+    },
+    {
+      "question_body": {
+        "question": "What's Your Name?",
+        "question_subparts": [],
+        "images": [],
+        "quizz_metadata": {
+          "qid": "2021000005",
+          "tags": [],
+          "created": "30/10/2021 23/55/52"
+        }
+      },
+      "options": [
+        { "is_correct": true, "value": { "text": ["RAVIKUMAR"], "img": [] } },
+        { "is_correct": false, "value": { "text": ["PUNIT"], "img": [] } }
+      ],
+      "explanation": { "text": [], "img": [] }
+    }
+  ],
+  "metadata": {
+    "source": { "url": "https://nptel.ac.in/", "type": "pdf" },
+    "explanation": false,
+    "total_questions": "2",
+    "choices": [2],
+    "multi_select": false,
+    "title": "Corequiz"
+  }
+}

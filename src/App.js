@@ -14,10 +14,13 @@ import Auth from './pages/auth';
 import CourseStart from './pages/CourseStart';
 import Blog from './pages/blog';
 import CoursePage from './pages/coursepage';
-import {Elements} from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js';
+
+
 import Courses from './pages/Courses';
-const stripePromise = loadStripe('pk_test_51JgVuGLev35dWdL1Dq58DWoGiPNRpCD0AvjnTra9tsb96VrIdP6MsrR1m6LkbDskK8f5uAakFYsGHmu4wcyV8mLz00vL6hTACi');
+import CoursePages from './pages/CoursePages';
+import AboutUs from './pages/AboutUs';
+import BlogPage from './pages/BlogPage';
+
 
 
 const theme = createTheme({
@@ -35,7 +38,7 @@ const theme = createTheme({
 function App() {
   return (
     
-      <Elements stripe={stripePromise}>
+    
     <ThemeProvider theme={theme}>
       <AuthProvider>
      
@@ -44,11 +47,14 @@ function App() {
     <Switch>
     <PrivateRoute exact path="/welcome" component={Home} />
     <Route exact path="/login" component={SignInSide} />
-    <PrivateRoute exact path="/course" component={CoursePage} />
+    <PrivateRoute exact path="/course" component={CoursePages} />
     <Route exact path="/" component={LandingPage} />
-    <PrivateRoute exact path="/Courses" component={CourseStart} />
+    <PrivateRoute exact path="/Courses" component={Quiz} />
     <PrivateRoute exact path="/blog" component={Blog} />
     <PrivateRoute exact path="/learn" component={Courses} />
+    <PrivateRoute exact path="/about-us" component={AboutUs} />
+    <PrivateRoute exact path="/blog/id" component={BlogPage} />
+    <PrivateRoute exact path="/course/:id" component={CoursePages} />
     
     </Switch>
    </div> 
@@ -58,7 +64,7 @@ function App() {
     
      </AuthProvider>
     </ThemeProvider>
-    </Elements>
+   
     
   );
 }

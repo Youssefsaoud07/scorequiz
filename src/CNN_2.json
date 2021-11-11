@@ -1,0 +1,682 @@
+{
+    "quizzes": [
+        {
+            "question_body": {
+                "question": "Which among the following are true:",
+                "question_subparts": [
+                    "consider the following sentences:",
+                    "1. each feature maps is independent of other feature maps in same layer while generating class activation maps in CAM.",
+                    "2. the importance weights wi, which weights the feature maps in our specific layer, are computed by thresholding the corresponding activations.",
+                    "3. class agnostic inferences can be generated using grad-CAM, while CAM is class specific."
+                ],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000000,
+                    "tags": [],
+                    "created": "26/10/2021 17/28/12"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "only 3"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "2 and 3"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "1 and 2"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "only 1"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "which among the following is false:",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000001,
+                    "tags": [],
+                    "created": "26/10/2021 17/28/50"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "in noodle style transfer, matching the gram matrices of feature map is equivalent to minimize the maximum mean discrepancy (MMD) with the 2nd order polynomial kernel"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "the correlations between the style of the two images is measured by the similarity of the gram matrix of the activation of each layer"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "context reconstructions will get better, as we go deeper in the network"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "Perceptual Loss for style transfer uses a pre-trained classifier network for alignment"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "which among the following are false:",
+                "question_subparts": [
+                    "consider the following sentences:",
+                    "1. the input image is progressively updated to maximize activation of a specific neuron in the deep network while \u2018deep dreaming\u2019. the deeper such neurons are, the  networks dreams about simple strokes an ornament like characters.",
+                    "2. Deep dream helps to generate adversarial examples which can be used for training more robust deep networks.",
+                    "3. the style of artifacts that are dreamed of is irrespective of data that is used to train the network."
+                ],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000002,
+                    "tags": [],
+                    "created": "26/10/2021 17/29/33"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "only 2"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "only 3"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "2 and 3"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "1 and 2"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "in the content of neural style transfer, the content last and the style loss is used to update",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000003,
+                    "tags": [],
+                    "created": "26/10/2021 17/30/18"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "content image"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "the model para meters only"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "input image only"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "the model parameters on the input image"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "select the correct answer based on the axioms and attribution methods as given below:",
+                "question_subparts": [
+                    "Below is the list of some desirable criteria (axioms) for an attribution method:",
+                    "1. Sensitivity- is starting from baseline, waiting a variable changes the output, then the variable should receive some attribution an A variable that has no effect on the output has no attribution.",
+                    "2. implementation invariance - two networks that compute identi-Cal functions but all input get identical attributions even if their architecture/parameters differ.",
+                    "3. Symmetry - symmetric variables with identical values get equal attributions."
+                ],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000004,
+                    "tags": [],
+                    "created": "26/10/2021 17/31/16"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "guided backpropagation and deconvnets for low sensitivity property"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "deep lift follows sensitivity property but breaks implementation invariance"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "layer wise relevance propagation (LRP) Follows implementation invariants but doesn't follow sensitivity"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "integrated gradient(IG) follow symmetry property but doesn't follow sensitivity"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "Which among the following is false?",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000005,
+                    "tags": [],
+                    "created": "26/10/2021 17/32/14"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "global average pool (GAP) technique is used in both CAM and grad-CAM"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "the purpose of gap is to find an important score for every feature map, which represents how much that feature map contributes to generate the explanation"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "for both Cam and grad Cam, an explanation can be generated from any convolution layer of a CNN"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "gran-Cam++ considers putting different importance to every pixel of feature map, but grandcamp puts the same importance to every pixel of a feature map"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "which among the following is false?",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000006,
+                    "tags": [],
+                    "created": "26/10/2021 17/32/46"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "for all the methods of lrp, grad Cam and IG, the signal transverses from output to all the way to input space to generate explanation"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "guided backpropagation generates sharper visualization than deconvolution which contains better texture information of the image"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "in the case of Maxwell being applied in CNN, the location of the maximum pixel value is remembered which is required during backward signal transfer for guided backpropagation"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "explanations generated from the deeper layer are more meaningful then initial layers for grad cam"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "suppose one feature map of Lth player of CNN is represented as fl. During backward path of output signal, the same feature map is represented as Rl. hence we have Rli+1 = dfout/ dfl+1i, Where F out is the network output and I represents one pixel of the feature map. suppose l + 1-th layer represents ReLu operation. then we have fl+1i = relu(fli) = max(fii, 0). Below options are correct in the given scenario:",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000007,
+                    "tags": [],
+                    "created": "26/10/2021 17/33/31"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "for simple back propagation we have Rli = (fli >0). Rli+1"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "For backward deconvolution we have, Rli = ( Rli+1 >0). Rli+1"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "For guided backpropagation we have Rli = (fli >0)( Rli+1 >0). Rli+1"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "None of the above options is correct"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "which of the following statement is false?",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000008,
+                    "tags": [],
+                    "created": "26/10/2021 17/34/12"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "feature maps of final layer of a CNN capture most abstract concept in the feature maps of initial layers"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "occlusion experiments are done to identify which area a CNN is looking to classify an image"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "CNN can be used in unsupervised setting to cluster images based on features from final layers"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "initial layers are retrained and final layers of pleased in transfer learning"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "which of the following statements is false:",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000009,
+                    "tags": [],
+                    "created": "26/10/2021 17/34/48"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "guided backpropagation can be thought as a three step process \u201ccompute gradients\uf0e0zero out negative gradients\uf0e0back propagate\u201d"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "we can visualize the gradient of the input image with respect to the output neuron of the predicted class to understand neural network behavior "
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "class activation map (CAM) do not use global average pooling technique which generating class activation maps"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "noodle style transfer algorithm has two objective functions that match style and content from two different images"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "in the context of deep-dream algorithm which of the following statement is false?",
+                "question_subparts": [],
+                "images": [],
+                "ques_metadata": {
+                    "qid": 2021000010,
+                    "tags": [],
+                    "created": "26/10/2021 17/35/32"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "if we choose anyone neuron from initial layers of the neural network to maximize it's output with respect to an input image we will observe the low level patterns like edges textures etc. that are responsible for that neurons activations on the input image"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "if we choose anyone neuron from the final layers of the neural network to maximize its output with respect to an input image we will observe high level patterns like faces buses houses etc. that are responsible for that neurons activations on the input image"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "we can maximize only one of the neurons output in a layer with respect to input image"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "we can maximize any number of neurons output in a layer with respect to input image to observe interesting patterns added to the input image after a few iterations"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "question_body": {
+                "question": "Consider the input to a CNN players activation function (use ReLu) as and while backpropagation, gradients corresponding to the previous input. then the result of backpropagation in guided backpropagation algorithm is?",
+                "question_subparts": [],
+                "images": [
+                    "https://drive.google.com/file/d/1w-oHdxCErzJUgWHODdmYwrg8rDVIwRjV/view?usp=sharing"
+                ],
+                "ques_metadata": {
+                    "qid": 2021000011,
+                    "tags": [],
+                    "created": "26/10/2021 17/37/24"
+                },
+                "Explanation": {
+                    "text": [],
+                    "img": [],
+                    "options": [
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "table 1"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": true,
+                            "value": {
+                                "text": [
+                                    "table 2"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "table 3"
+                                ],
+                                "img": []
+                            }
+                        },
+                        {
+                            "is_correct": false,
+                            "value": {
+                                "text": [
+                                    "table 4"
+                                ],
+                                "img": []
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "source": {
+            "url": "https://nptel.ac.in/",
+            "type": "pdf"
+        },
+        "explanation": false,
+        "total_questions": "12",
+        "choices": [
+            4
+        ],
+        "multi_select": false,
+        "title": "CNN_2"
+    }
+}
