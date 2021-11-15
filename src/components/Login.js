@@ -240,6 +240,10 @@ const Login = ({ history }) => {
               <SocialIcon network={'github'} bgColor={'black'} onClick={() => {signInWithGithubPopUp()}}/>
               
             </Box>
+            <Button  simple color="primary" size="lg"  onClick={()=>{props.setIsLogin(prev => !prev)}}>
+                    Don't have an account click here to register
+                    </Button>
+                  
           </form>
         </div>
       </Grid>

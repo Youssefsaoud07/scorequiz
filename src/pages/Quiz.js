@@ -12,7 +12,7 @@ import app from '../configs/authMethod';
 import { useLocation } from 'react-router';
 import { EmojiObjects } from '@material-ui/icons';
 
-
+//styling and design
 const useStyles = makeStyles((theme) => ({
     container:{
         justifyContent:'center',
@@ -209,16 +209,16 @@ const ChappitreMenu = [
 
 const Quiz = ({match}) => {
   
-      
+      //getting data from the use location hook
     
     let data = useLocation();
-    
+    // corsa is course name
     const [corsa, setCorsa] = useState(data.state.quiz)
-   
+   // chaps are an array of chapters
     const [chaps, setChaps] = useState(data.state.chap)
     const [isOpen, setIsOpen] = useState(false)
     console.log('chapsssssssssssssssssssspsoosksjjjdk',corsa)
-
+//getting course data from the fire base
     const  getName = async () => {
        
          
@@ -256,7 +256,7 @@ const Quiz = ({match}) => {
     // const [courseTitle, setCourseTitle] = useState(quiz.title)
     const {currentUser}= useContext(AuthContext)
     const [Clientsdatastored, setClientsdatastored] = useState([])
-    const [selected, setSelected] = useState('')
+    const [selected, setSelected] = useState()
     const [index, setIndex] = useState(0)
     const [submited, setSubmited] = useState(false)
     const uid=currentUser.uid
@@ -309,10 +309,13 @@ const Quiz = ({match}) => {
         
       }, [corsa,doc])
       
-
-      const handelCorrectAn= (value,isCorrect) => {
+//this function will get a value and will store it on a state text img or both of themm
+      const handelCorrectAn= async(value,isCorrect) => {
        
-        value?.text?.length?setSelected(value.text[0]):setSelected(value?.img?.[0]);
+        await value?.text?.length?
+        setSelected(value.text[0])
+        :setSelected(value?.img?.[0]);
+       
       
       
         
@@ -345,7 +348,7 @@ const Quiz = ({match}) => {
     const classes = useStyles();
     
     
-    
+    //fuction that navigat to the next question and check the length and if clients had already answerded on some question previosly
     
     const handelNextQuestion=()=>{
         console.log('eeeeeeeeeeeeeeeeeeeeeeeeeeeee',clientAnswers)
@@ -359,12 +362,14 @@ const Quiz = ({match}) => {
          }else if (selected){
             setClientAnswers([... clientAnswers,selected])
          }
+       
          setCurrentQuestion(currentQuestion+1)
+        
         
           setClicked(false)
            if(currentQuestion >Clientsdatastored.length-1){
             
-        submitScore()
+       
         setSubmited(false)
         
            }
@@ -381,6 +386,13 @@ const Quiz = ({match}) => {
        
        
     }
+
+    //fuction that construct an object and save it to the firebase
+    useEffect(() => {
+        if(currentQuestion >Clientsdatastored.length-1){
+      submitScore()
+        }
+    }, [clicked,])
     const submitScore = ()=>{
        
     
@@ -412,14 +424,14 @@ return 'false'
    }
 
 
-
+//for answer check
 const submitAanswer=()=>{
     setSubmited(true)
 }
 
 
 
-
+//this is the tricky part this function will be activated after submiting it will test all possiblities answer coreect or not img text both and will return a classname
     const verfiyAnswer=(a,b)=>{
         console.log('haytoiiuiturifyfuyfufuuduru',Clientsdatastored)
         console.log('imagessdsd',quiz?.quizzes[currentQuestion]?.question_body?.images[0])
@@ -613,7 +625,13 @@ const submitAanswer=()=>{
                 {quiz?.quizzes?.[currentQuestion].options.map((answerOption)=>(
                     
                 <div className={submited?`${verfiyAnswer(answerOption?.value,answerOption?.is_correct).div}`:answerOption?.value?.img?.length?'answerD':'answerB'}
-                onClick={()=> handelCorrectAn(answerOption.value,answerOption.is_correct)}
+                onClick={()=> {
+                     handelCorrectAn(answerOption.value,answerOption.is_correct)
+                  
+                    // setSelected(answerOption?.value.text[0]);
+                    // setClicked(true)
+                }
+                }
                 
                  > 
                <input name="radio-group1"  type="radio" value={answerOption.value.text} checked={answerOption.value.text==selected} />

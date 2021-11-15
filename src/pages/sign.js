@@ -2,6 +2,7 @@ import React, { useCallback, useContext,useState,useEffect } from "react";
 import CardFooter from "../components/comp/Card/CardFooter.js";
 import Button from "../components/comp/CustomButtons/Button.js";
 import Hidden from '@material-ui/core/Hidden';
+import bg from '../images/logo.png'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -16,6 +17,7 @@ import styles from "../components/log";
 import image from "../images/sign.jpg";
 import LoginPage from "../components/loginPage";
 import Register from "../components/Register";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
@@ -27,21 +29,19 @@ console.log('his',history)
 
   return (
     <div style={{display:'flex'}}>
-      <Hidden smDown>
-      <div style={{position:'absolute',width:'50%',color:'#fff',margin:50,marginTop:150,fontWeight:'bold',zIndex:1}} onClick={()=>{setIsLogin(prev => !prev)}}>
-        You Don't have account You can Register Right Now
+      
+     <div style={{padding:'85px 10px',width:'50%'}}>
+       <img src={bg} />
+       <div style={{color:'#000',margin:20,marginTop:150,fontWeight:'bold',zIndex:1}} onClick={()=>{setIsLogin(prev => !prev)}}>
+        You Don't have account <a href='#' style={{color:'#F3105F',fontWeight:'bold'}}>Click Here To Register Right Now</a> 
       </div>
       
-     
+      </div>
       
-        <div className={classes.imgContainer}  style={{backgroundColor:'red',width:'90%',marginLeft:'50px',height:530,marginTop:60,borderRadius:7
-     , backgroundImage: `url(${image})`
-      }}>
-        </div>
-        </Hidden>
-        { isLogin?(<LoginPage history={history} />):(<Register/>)}
+      <div >
+        { isLogin?(<LoginPage history={history} setLogin={setIsLogin} isLogin={isLogin} />):(<Register setLogin={setIsLogin}/>)}
      
-    
+    </div>
     {/* <CardFooter className={classes.cardFooter}>
                     <Button simple color="primary" size="lg" onClick={()=>{setIsLogin(false)}}>
                       Get started

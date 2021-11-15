@@ -29,6 +29,7 @@ import styles from "./log.js";
 
 import image from "../images/sign.jpg";
 import {useHistory} from "react-router-dom";
+import Lock from "@material-ui/icons/Lock";
 
 const useStyles = makeStyles(styles);
 
@@ -142,9 +143,7 @@ export default function LoginPage(props,) {
                         defaultValue:password,
                         endAdornment: (
                           <InputAdornment position="end">
-                            <Icon className={classes.inputIconsColor}>
-                              lock_outline
-                            </Icon>
+                            <Lock className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
                         autoComplete: "off",

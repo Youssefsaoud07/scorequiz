@@ -134,7 +134,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Blog = () => {
     
-  
+  //getting use auth from user context
 
     const {currentUser}=useContext(AuthContext)
     
